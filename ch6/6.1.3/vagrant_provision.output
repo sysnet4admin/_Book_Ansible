@@ -1,0 +1,237 @@
+c:\HashiCorp>vagrant provision ansible-server
+==> ansible-server: Running provisioner: shell...
+    ansible-server: Running: inline script
+    ansible-server: Loaded plugins: fastestmirror
+    ansible-server: Loading mirror speeds from cached hostfile
+    ansible-server:  * base: ftp-srv2.kddilabs.jp
+    ansible-server:  * epel: mirror.premi.st
+    ansible-server:  * extras: ftp-srv2.kddilabs.jp
+    ansible-server:  * updates: centos.mirror.moack.net
+    ansible-server: Package epel-release-7-11.noarch already installed and latest version
+    ansible-server: Nothing to do
+==> ansible-server: Running provisioner: shell...
+    ansible-server: Running: inline script
+    ansible-server: Loaded plugins: fastestmirror
+    ansible-server: Loading mirror speeds from cached hostfile
+    ansible-server:  * base: ftp-srv2.kddilabs.jp
+    ansible-server:  * epel: mirror.premi.st
+    ansible-server:  * extras: ftp-srv2.kddilabs.jp
+    ansible-server:  * updates: centos.mirror.moack.net
+    ansible-server: Package ansible-2.5.5-1.el7.noarch already installed and latest version
+    ansible-server: Nothing to do
+==> ansible-server: Running provisioner: file...
+==> ansible-server: Running provisioner: shell...
+    ansible-server: Running: inline script
+    ansible-server:
+    ansible-server: PLAY [Setup for the Ansible's Environment] **************************************
+    ansible-server:
+    ansible-server: TASK [Add "/etc/ansible/hosts"] ************************************************
+    ansible-server: ok: [localhost]
+    ansible-server:
+    ansible-server: TASK [Create vim env's directories & files] ************************************
+    ansible-server: changed: [localhost] => (item=mkdir -p /home/vagrant/.vim/autoload /home/vagrant/.vim/bundle)
+    ansible-server: changed: [localhost] => (item=touch /home/vagrant/.vimrc)
+    ansible-server: changed: [localhost] => (item=touch /home/vagrant/.bashrc)
+    ansible-server:
+    ansible-server: TASK [Install vim-enhanced] ****************************************************
+    ansible-server:  [WARNING]: Consider using the file module with state=directory rather than
+    ansible-server: running mkdir.  If you need to use command because file is insufficient you can
+    ansible-server: add warn=False to this command task or set command_warnings=False in
+    ansible-server: ansible.cfg to get rid of this message.
+    ansible-server:  [WARNING]: Consider using the file module with state=touch rather than running
+    ansible-server: touch.  If you need to use command because file is insufficient you can add
+    ansible-server: warn=False to this command task or set command_warnings=False in ansible.cfg to
+    ansible-server: get rid of this message.
+    ansible-server: ok: [localhost]
+    ansible-server:
+    ansible-server: TASK [Install git] *************************************************************
+    ansible-server: ok: [localhost]
+    ansible-server:
+    ansible-server: TASK [Download pathogen.vim] ***************************************************
+    ansible-server: changed: [localhost]
+    ansible-server:
+    ansible-server: TASK [Git clone vim-ansible-yaml] **********************************************
+    ansible-server:  [WARNING]: Consider using the get_url or uri module rather than running curl.
+    ansible-server: If you need to use command because get_url or uri is insufficient you can add
+    ansible-server: warn=False to this command task or set command_warnings=False in ansible.cfg to
+    ansible-server: get rid of this message.
+    ansible-server: ok: [localhost]
+    ansible-server:
+    ansible-server: TASK [Configure vimrc] *********************************************************
+    ansible-server: ok: [localhost] => (item=set number)
+    ansible-server: ok: [localhost] => (item=execute pathogen#infect())
+    ansible-server: ok: [localhost] => (item=syntax on)
+    ansible-server:
+    ansible-server: TASK [Configure Bashrc] ********************************************************
+    ansible-server: ok: [localhost] => (item=alias ans='ansible')
+    ansible-server: ok: [localhost] => (item=alias anp='ansible-playbook')
+    ansible-server:
+    ansible-server: PLAY RECAP *********************************************************************
+    ansible-server: localhost                  : ok=8    changed=2    unreachable=0    failed=0
+==> ansible-server: Running provisioner: file...
+==> ansible-server: Running provisioner: shell...
+    ansible-server: Running: inline script
+    ansible-server:
+    ansible-server: PLAY [Create authority between server and nodes] *******************************
+    ansible-server:
+    ansible-server: TASK [ssh-keyscan for known_hosts file] *****************************************
+    ansible-server: changed: [192.168.1.101]
+    ansible-server:
+    ansible-server: TASK [input key] ***************************************************************
+    ansible-server: ok: [192.168.1.101] => (item=192.168.1.101 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHO0t4q2CMKUe216fdF9dBZdQ15m/TLZrIZiUJ05BXiAtXJiMOlCS05xcd4uy8vof/thUJ62XxEjHUxPF8aRK6Q=)
+    ansible-server:
+    ansible-server: TASK [ssh-keygen for authorized_keys file] *************************************
+    ansible-server: changed: [192.168.1.101]
+    ansible-server:
+    ansible-server: TASK [input key for each node] *************************************************
+    ansible-server: changed: [192.168.1.101]
+    ansible-server:
+    ansible-server: PLAY [Create authority between server and nodes] *******************************
+    ansible-server:
+    ansible-server: TASK [ssh-keyscan for known_hosts file] *****************************************
+    ansible-server: changed: [192.168.1.102]
+    ansible-server:
+    ansible-server: TASK [input key] ***************************************************************
+    ansible-server: ok: [192.168.1.102] => (item=192.168.1.102 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCHkoJNNCbwFjqax39GL3G7rXwK9Ly42BZ06oFETVhO6HWtGw6fPSJA/2TKsBm9oYDTZN4AqXlrNKpM81CQUYkI=)
+    ansible-server:
+    ansible-server: TASK [ssh-keygen for authorized_keys file] *************************************
+    ansible-server: fatal: [192.168.1.102]: FAILED! => {"changed": true, "cmd": ["ssh-keygen", "-b", "2048", "-t", "rsa", "-f", "~/.ssh/id_rsa", "-q", "-N", ""], "delta": "0:00:00.216856", "end": "2018-06-22 01:42:05.561370", "msg": "non-zero return code", "rc": 1, "start": "2018-06-22 01:42:05.344514", "stderr": "", "stderr_lines": [], "stdout": "/home/vagrant/.ssh/id_rsa already exists.\nOverwrite (y/n)? ", "stdout_lines": ["/home/vagrant/.ssh/id_rsa already exists.", "Overwrite (y/n)? "]}
+    ansible-server: ...ignoring
+    ansible-server:
+    ansible-server: TASK [input key for each node] *************************************************
+    ansible-server: changed: [192.168.1.102]
+    ansible-server:
+    ansible-server: PLAY [Create authority between server and nodes] *******************************
+    ansible-server:
+    ansible-server: TASK [ssh-keyscan for known_hosts file] *****************************************
+    ansible-server: changed: [192.168.1.103]
+    ansible-server:
+    ansible-server: TASK [input key] ***************************************************************
+    ansible-server: ok: [192.168.1.103] => (item=192.168.1.103 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKF75x0e4txCkYiNHvIsQb9i0fPRb2O/WbGPCYQ4BI+n8qPO2Sco0cRmmQPPOX1qRyHw3IUKSFjANHaWgr4P3+c=)
+    ansible-server:
+    ansible-server: TASK [ssh-keygen for authorized_keys file] *************************************
+    ansible-server: fatal: [192.168.1.103]: FAILED! => {"changed": true, "cmd": ["ssh-keygen", "-b", "2048", "-t", "rsa", "-f", "~/.ssh/id_rsa", "-q", "-N", ""], "delta": "0:00:00.183845", "end": "2018-06-22 01:42:07.537894", "msg": "non-zero return code", "rc": 1, "start": "2018-06-22 01:42:07.354049", "stderr": "", "stderr_lines": [], "stdout": "/home/vagrant/.ssh/id_rsa already exists.\nOverwrite (y/n)? ", "stdout_lines": ["/home/vagrant/.ssh/id_rsa already exists.", "Overwrite (y/n)? "]}
+    ansible-server: ...ignoring
+    ansible-server:
+    ansible-server: TASK [input key for each node] *************************************************
+    ansible-server: changed: [192.168.1.103]
+    ansible-server:
+    ansible-server: PLAY [Create authority between server and nodes] *******************************
+    ansible-server:
+    ansible-server: TASK [ssh-keyscan for known_hosts file] *****************************************
+    ansible-server: changed: [192.168.1.104]
+    ansible-server:
+    ansible-server: TASK [input key] ***************************************************************
+    ansible-server: ok: [192.168.1.104] => (item=192.168.1.104 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGgqh7o15M+wwA1f/vyyoo5gEJqlj+9rnYqGHkfBShSyHPUYVRsyPnFsUNwcgtWidZ59Jd/r/2cUrj6MNCBO5Ss=)
+    ansible-server:
+    ansible-server: TASK [ssh-keygen for authorized_keys file] *************************************
+    ansible-server: fatal: [192.168.1.104]: FAILED! => {"changed": true, "cmd": ["ssh-keygen", "-b", "2048", "-t", "rsa", "-f", "~/.ssh/id_rsa", "-q", "-N", ""], "delta": "0:00:00.197560", "end": "2018-06-22 01:42:09.523985", "msg": "non-zero return code", "rc": 1, "start": "2018-06-22 01:42:09.326425", "stderr": "", "stderr_lines": [], "stdout": "/home/vagrant/.ssh/id_rsa already exists.\nOverwrite (y/n)? ", "stdout_lines": ["/home/vagrant/.ssh/id_rsa already exists.", "Overwrite (y/n)? "]}
+    ansible-server: ...ignoring
+    ansible-server:
+    ansible-server: TASK [input key for each node] *************************************************
+    ansible-server: changed: [192.168.1.104]
+    ansible-server:
+    ansible-server: PLAY [Create authority between server and nodes] *******************************
+    ansible-server:
+    ansible-server: TASK [ssh-keyscan for known_hosts file] *****************************************
+    ansible-server: changed: [192.168.1.105]
+    ansible-server:
+    ansible-server: TASK [input key] ***************************************************************
+    ansible-server: ok: [192.168.1.105] => (item=192.168.1.105 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIspwTpWt8UB3qeBm2xHK180cfKwgVz9jJYOo/VXhS3nRzdZPwq3n3MoDpt0xXMUH1xQTzs/v9ym+GgmjzJoiJM=)
+    ansible-server:
+    ansible-server: TASK [ssh-keygen for authorized_keys file] *************************************
+    ansible-server: fatal: [192.168.1.105]: FAILED! => {"changed": true, "cmd": ["ssh-keygen", "-b", "2048", "-t", "rsa", "-f", "~/.ssh/id_rsa", "-q", "-N", ""], "delta": "0:00:00.535281", "end": "2018-06-22 01:42:11.881562", "msg": "non-zero return code", "rc": 1, "start": "2018-06-22 01:42:11.346281", "stderr": "", "stderr_lines": [], "stdout": "/home/vagrant/.ssh/id_rsa already exists.\nOverwrite (y/n)? ", "stdout_lines": ["/home/vagrant/.ssh/id_rsa already exists.", "Overwrite (y/n)? "]}
+    ansible-server: ...ignoring
+    ansible-server:
+    ansible-server: TASK [input key for each node] *************************************************
+    ansible-server: changed: [192.168.1.105]
+    ansible-server:
+    ansible-server: PLAY [Create authority between server and nodes] *******************************
+    ansible-server:
+    ansible-server: TASK [ssh-keyscan for known_hosts file] *****************************************
+    ansible-server: changed: [192.168.1.201]
+    ansible-server:
+    ansible-server: TASK [input key] ***************************************************************
+    ansible-server: ok: [192.168.1.201] => (item=192.168.1.201 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBNw5CIZqKdo1WBOHur0vQPw+K5AnjQORX2IYyaT4yUSjc6YacH4M7Gpm6GScL1AwuAEHHcx231rpfP9j46un7g=)
+    ansible-server:
+    ansible-server: TASK [ssh-keygen for authorized_keys file] *************************************
+    ansible-server: fatal: [192.168.1.201]: FAILED! => {"changed": true, "cmd": ["ssh-keygen", "-b", "2048", "-t", "rsa", "-f", "~/.ssh/id_rsa", "-q", "-N", ""], "delta": "0:00:00.024019", "end": "2018-06-22 01:42:13.642217", "msg": "non-zero return code", "rc": 1, "start": "2018-06-22 01:42:13.618198", "stderr": "", "stderr_lines": [], "stdout": "/home/vagrant/.ssh/id_rsa already exists.\nOverwrite (y/n)? ", "stdout_lines": ["/home/vagrant/.ssh/id_rsa already exists.", "Overwrite (y/n)? "]}
+    ansible-server: ...ignoring
+    ansible-server:
+    ansible-server: TASK [input key for each node] *************************************************
+    ansible-server: changed: [192.168.1.201]
+    ansible-server:
+    ansible-server: PLAY [Create authority between server and nodes] *******************************
+    ansible-server:
+    ansible-server: TASK [ssh-keyscan for known_hosts file] *****************************************
+    ansible-server: changed: [192.168.1.202]
+    ansible-server:
+    ansible-server: TASK [input key] ***************************************************************
+    ansible-server: ok: [192.168.1.202] => (item=192.168.1.202 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNCBxiGCY0oxe0V8Z4boyxW3H3/nG8j1ceo1UbPhmCzG9N7Rp22/mgLn++pS84l11/HAKnU2+XOAkTELOOkQU2k=)
+    ansible-server:
+    ansible-server: TASK [ssh-keygen for authorized_keys file] *************************************
+    ansible-server: fatal: [192.168.1.202]: FAILED! => {"changed": true, "cmd": ["ssh-keygen", "-b", "2048", "-t", "rsa", "-f", "~/.ssh/id_rsa", "-q", "-N", ""], "delta": "0:00:00.224741", "end": "2018-06-22 01:42:25.777631", "msg": "non-zero return code", "rc": 1, "start": "2018-06-22 01:42:25.552890", "stderr": "", "stderr_lines": [], "stdout": "/home/vagrant/.ssh/id_rsa already exists.\nOverwrite (y/n)? ", "stdout_lines": ["/home/vagrant/.ssh/id_rsa already exists.", "Overwrite (y/n)? "]}
+    ansible-server: ...ignoring
+    ansible-server:
+    ansible-server: TASK [input key for each node] *************************************************
+    ansible-server: changed: [192.168.1.202]
+    ansible-server:
+    ansible-server: PLAY [Create authority between server and nodes] *******************************
+    ansible-server:
+    ansible-server: TASK [ssh-keyscan for known_hosts file] *****************************************
+    ansible-server: changed: [192.168.1.203]
+    ansible-server:
+    ansible-server: TASK [input key] ***************************************************************
+    ansible-server: ok: [192.168.1.203] => (item=192.168.1.203 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMpFVfCPyk231zCKlRIyOsL9s5Gwbx4Afy2aXMNmi5Ir4A2dV2K2JnveTWdA4WzbkDfR1uYl4y4Z5XGPzMYYqpc=)
+    ansible-server:
+    ansible-server: TASK [ssh-keygen for authorized_keys file] *************************************
+    ansible-server: fatal: [192.168.1.203]: FAILED! => {"changed": true, "cmd": ["ssh-keygen", "-b", "2048", "-t", "rsa", "-f", "~/.ssh/id_rsa", "-q", "-N", ""], "delta": "0:00:00.029020", "end": "2018-06-22 01:42:27.535029", "msg": "non-zero return code", "rc": 1, "start": "2018-06-22 01:42:27.506009", "stderr": "", "stderr_lines": [], "stdout": "/home/vagrant/.ssh/id_rsa already exists.\nOverwrite (y/n)? ", "stdout_lines": ["/home/vagrant/.ssh/id_rsa already exists.", "Overwrite (y/n)? "]}
+    ansible-server: ...ignoring
+    ansible-server:
+    ansible-server: TASK [input key for each node] *************************************************
+    ansible-server: changed: [192.168.1.203]
+    ansible-server:
+    ansible-server: PLAY [Create authority between server and nodes] *******************************
+    ansible-server:
+    ansible-server: TASK [ssh-keyscan for known_hosts file] *****************************************
+    ansible-server: changed: [192.168.1.204]
+    ansible-server:
+    ansible-server: TASK [input key] ***************************************************************
+    ansible-server: ok: [192.168.1.204] => (item=192.168.1.204 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGsuWM4/yzTBuvo1yYeu1dcun2LfG2MDDwZw8Pyr9AkEMQremOAGABSXl9q/czLt540dRcHUMkgWd62mPmWeKPo=)
+    ansible-server:
+    ansible-server: TASK [ssh-keygen for authorized_keys file] *************************************
+    ansible-server: fatal: [192.168.1.204]: FAILED! => {"changed": true, "cmd": ["ssh-keygen", "-b", "2048", "-t", "rsa", "-f", "~/.ssh/id_rsa", "-q", "-N", ""], "delta": "0:00:00.276636", "end": "2018-06-22 01:42:29.561101", "msg": "non-zero return code", "rc": 1, "start": "2018-06-22 01:42:29.284465", "stderr": "", "stderr_lines": [], "stdout": "/home/vagrant/.ssh/id_rsa already exists.\nOverwrite (y/n)? ", "stdout_lines": ["/home/vagrant/.ssh/id_rsa already exists.", "Overwrite (y/n)? "]}
+    ansible-server: ...ignoring
+    ansible-server:
+    ansible-server: TASK [input key for each node] *************************************************
+    ansible-server: changed: [192.168.1.204]
+    ansible-server:
+    ansible-server: PLAY [Create authority between server and nodes] *******************************
+    ansible-server:
+    ansible-server: TASK [ssh-keyscan for known_hosts file] *****************************************
+    ansible-server: changed: [192.168.1.205]
+    ansible-server:
+    ansible-server: TASK [input key] ***************************************************************
+    ansible-server: ok: [192.168.1.205] => (item=192.168.1.205 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBZAqRdE8D383F9tBAaajz5pxIt8v/g78Yg/2eaFUw24hUVJXg0zVYfTDkKO2k+jITs9t9X3iIJjA6Duu3c2wmE=)
+    ansible-server:
+    ansible-server: TASK [ssh-keygen for authorized_keys file] *************************************
+    ansible-server: fatal: [192.168.1.205]: FAILED! => {"changed": true, "cmd": ["ssh-keygen", "-b", "2048", "-t", "rsa", "-f", "~/.ssh/id_rsa", "-q", "-N", ""], "delta": "0:00:00.057495", "end": "2018-06-22 01:42:31.400281", "msg": "non-zero return code", "rc": 1, "start": "2018-06-22 01:42:31.342786", "stderr": "", "stderr_lines": [], "stdout": "/home/vagrant/.ssh/id_rsa already exists.\nOverwrite (y/n)? ", "stdout_lines": ["/home/vagrant/.ssh/id_rsa already exists.", "Overwrite (y/n)? "]}
+    ansible-server: ...ignoring
+    ansible-server:
+    ansible-server: TASK [input key for each node] *************************************************
+    ansible-server: changed: [192.168.1.205]
+    ansible-server:
+    ansible-server: PLAY RECAP *********************************************************************
+    ansible-server: 192.168.1.101              : ok=4    changed=3    unreachable=0    failed=0
+    ansible-server: 192.168.1.102              : ok=4    changed=3    unreachable=0    failed=0
+    ansible-server: 192.168.1.103              : ok=4    changed=3    unreachable=0    failed=0
+    ansible-server: 192.168.1.104              : ok=4    changed=3    unreachable=0    failed=0
+    ansible-server: 192.168.1.105              : ok=4    changed=3    unreachable=0    failed=0
+    ansible-server: 192.168.1.201              : ok=4    changed=3    unreachable=0    failed=0
+    ansible-server: 192.168.1.202              : ok=4    changed=3    unreachable=0    failed=0
+    ansible-server: 192.168.1.203              : ok=4    changed=3    unreachable=0    failed=0
+    ansible-server: 192.168.1.204              : ok=4    changed=3    unreachable=0    failed=0
+    ansible-server: 192.168.1.205              : ok=4    changed=3    unreachable=0    failed=0
+
+
+	

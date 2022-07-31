@@ -1,0 +1,9 @@
+---
+- name: custom facts
+  hosts: localhost
+  fact_path: ./ansible_tmp/
+
+  tasks:
+    - name: show
+      debug:
+        var: ansible_local.date_and_time

@@ -1,0 +1,30 @@
+[vagrant@ansible-server ~]$ anp env_w_debugger.yml
+
+PLAY [Environment] *******************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************
+ok: [localhost]
+
+TASK [echo $PATH] ********************************************************************************************************************************
+fatal: [localhost]: FAILED! => {"changed": true, "cmd": "wrong $PATH", "delta": "0:00:00.004752", "end": "2018-07-31 04:57:36.429562", "msg": "non-zero return code", "rc": 127, "start": "2018-07-31 04:57:36.424810", "stderr": "/bin/sh: wrong: command not found", "stderr_lines": ["/bin/sh: wrong: command not found"], "stdout": "", "stdout_lines": []}
+[localhost] TASK: echo $PATH (debug)> p task
+TASK: echo $PATH
+[localhost] TASK: echo $PATH (debug)> p task.args
+{'_ansible_check_mode': False,
+ '_ansible_debug': False,
+ '_ansible_diff': False,
+ '_ansible_keep_remote_files': False,
+ '_ansible_module_name': 'command',
+ '_ansible_no_log': False,
+ '_ansible_remote_tmp': u'~/.ansible/tmp',
+ '_ansible_selinux_special_fs': ['fuse', 'nfs', 'vboxsf', 'ramfs', '9p'],
+ '_ansible_shell_executable': u'/bin/sh',
+ '_ansible_socket': None,
+ '_ansible_syslog_facility': u'LOG_USER',
+ '_ansible_tmpdir': u'/home/vagrant/.ansible/tmp/ansible-tmp-1533013056.16-69484181229449/',
+ '_ansible_verbosity': 0,
+ '_ansible_version': '2.6.1',
+ u'_raw_params': u'wrong $PATH',
+ '_uses_shell': True,
+ 'warn': True}
+[localhost] TASK: echo $PATH (debug)>

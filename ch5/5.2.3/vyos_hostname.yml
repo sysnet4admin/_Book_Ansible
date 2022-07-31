@@ -1,0 +1,21 @@
+---
+- name: Change&set the hostname
+  hosts: vyos
+  gather_facts: no
+
+  tasks:
+    - name: hostname for ansible-vyos01
+      delegate_to: 192.168.1.51
+      run_once: true
+      vyos_system:
+        host_name: ansible-vyosA
+
+    - name: hostname for ansible-vyos02
+      delegate_to: 192.168.1.52
+      run_once: true
+      vyos_system:
+        host_name: ansible-vyosB
+
+    - name: save running-config
+      vyos_config:
+        save: yes

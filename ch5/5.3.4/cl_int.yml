@@ -1,0 +1,44 @@
+---
+- name: Config interface for spineA
+  hosts: 192.168.1.61
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add interface swp4 ip address 10.0.101.61/24
+        atomic: true
+
+- name: Config interface for spineB
+  hosts: 192.168.1.62
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add interface swp4 ip address 10.0.102.62/24
+        atomic: true
+
+- name: Config interface for leafA
+  hosts: 192.168.1.63
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add interface swp4 ip address 10.0.101.63/24
+        atomic: true
+
+- name: Config interface for leafB
+  hosts: 192.168.1.64
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add interface swp4 ip address 10.0.102.64/24
+        atomic: true

@@ -1,0 +1,25 @@
+---
+- name: Setup tftp to backup NXOS's running-config
+  hosts: localhost
+  become: yes
+  tasks:
+    - include_tasks: "./nxos_itasks/{{ item }}.yml"
+      with_items:
+        - "tftp_server_config"
+        - "selinux_permissive"
+        - "xinetd_service_restart"
+
+- name: Request to backup NXOS's running-config
+  hosts: nxos
+  vars:
+    ansible_user: admin  
+    ansible_password: vagrant
+  tasks:
+    - include_tasks: ./nxos_itasks/nxos_backup_adv.yml
+
+- name: selinux restore on ansible-server
+  hosts: localhost
+  gather_facts: no
+  become: yes
+  tasks:
+    - include_tasks: ./nxos_itasks/selinux_enforcing.yml

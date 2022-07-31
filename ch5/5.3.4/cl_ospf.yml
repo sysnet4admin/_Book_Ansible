@@ -1,0 +1,48 @@
+---
+- name: Config OSPF for spineA
+  hosts: 192.168.1.61
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add ospf router-id 0.0.0.61
+          - add ospf network 10.0.0.0/16 area 0.0.0.0
+        atomic: true
+
+- name: Config OSPF for spineB
+  hosts: 192.168.1.62
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add ospf router-id 0.0.0.62
+          - add ospf network 10.0.0.0/16 area 0.0.0.0
+        atomic: true
+
+- name: Config OSPF for leafA
+  hosts: 192.168.1.63
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add ospf router-id 0.0.0.63
+          - add ospf network 10.0.0.0/16 area 0.0.0.0
+        atomic: true
+
+- name: Config OSPF for leafB
+  hosts: 192.168.1.64
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add ospf router-id 0.0.0.64
+          - add ospf network 10.0.0.0/16 area 0.0.0.0
+        atomic: true

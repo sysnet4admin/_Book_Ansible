@@ -1,0 +1,20 @@
+---
+- name: Config peer-link
+  hosts: spine
+  gather_facts: no
+  remote_user: cumulus
+  tasks:
+    - include_tasks: cl_peerlink.yml
+
+- name: Import playbook for ospf config
+  import_playbook: cl_conf_ospf.yml
+
+- name: lldp service restart
+  hosts: cl
+  gather_facts: no
+  become: yes
+  vars:
+    ansible_user: cumulus
+    ansible_become_pass: CumulusLinux!  
+  tasks:
+    - include_tasks: cl_lldp.yml

@@ -1,0 +1,17 @@
+---
+- name: Config link Aggregation
+  hosts: vyos
+  gather_facts: no
+
+  tasks:
+    - name: make a bond interface
+      vyos_linkagg:
+        name: bond0
+        members:
+          - eth2
+          - eth3
+        mode: 802.3ad
+
+    - name: save running-config
+      vyos_config:
+        save: yes

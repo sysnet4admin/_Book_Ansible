@@ -1,0 +1,3 @@
+lnx_name: "{{ 'CentOS' if ansible_distribution == 'CentOS'
+               else 'Ubuntu' if ansible_distribution == 'Ubuntu'
+               else 'Just Linux' }}"

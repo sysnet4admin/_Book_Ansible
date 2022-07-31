@@ -1,0 +1,12 @@
+---
+- name: Create hosts file by template
+  hosts: nodes
+  become: yes
+  vars:
+    nu: "{{ groups.nodes | count }}"
+
+  tasks:
+    - name: replace hosts file
+      template:
+        src: hosts.j2
+        dest: /etc/hosts

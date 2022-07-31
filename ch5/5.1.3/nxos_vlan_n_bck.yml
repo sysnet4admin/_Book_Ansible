@@ -1,0 +1,28 @@
+---
+- name: Setup NXOS Vlan per service
+  hosts: NXOS
+  gather_facts: no
+
+  tasks:
+    - name: running-config backup before applying vlan
+      nxos_rollback:
+        checkpoint_file: before_vlan-config
+
+    - name: apply vlan for web
+      nxos_vlan:
+        vlan_id: 80
+        name: WEB
+
+    - name: apply vlan for app
+      nxos_vlan:
+        vlan_id: 2033
+        name: APP
+        
+    - name: apply vlan for DB
+      nxos_vlan:
+        vlan_id: 3306
+        name: DB
+
+    - name: running-config backup after applying vlan
+      nxos_rollback:
+        checkpoint_file: after_vlan-config

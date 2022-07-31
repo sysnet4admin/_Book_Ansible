@@ -1,0 +1,105 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  #===============#
+  # Cumulus nodes #
+  #===============#
+  
+  #Ansible-Cumulus01
+  config.vm.define "ansible-cl01" do |cl|
+     cl.vm.box = "CumulusCommunity/cumulus-vx"
+	 cl.vm.box_version = "3.6.0"
+	 cl.vm.box_check_update = false
+	 cl.vm.provider "virtualbox" do |vb|
+	   vb.name = "Ansible-Cumulus01(github_SysNet4Admin)"
+	   vb.customize ['modifyvm', :id, '--macaddress1', '080027000061']
+	   vb.customize ['modifyvm', :id, '--natnet1', '10.0.61.0/24']
+	 end
+	 cl.vm.host_name = "ansible-cl01"
+     cl.vm.network "public_network", ip: "192.168.1.61"
+	 cl.vm.network "private_network", virtualbox__intnet: "swp2", auto_config: false
+	 cl.vm.network "private_network", virtualbox__intnet: "swp3", auto_config: false
+	 cl.vm.network "private_network", virtualbox__intnet: "swp4", auto_config: false
+	 cl.vm.network "forwarded_port", guest: 22, host: 60061, auto_correct: true, id: "ssh"
+	 cl.vm.synced_folder "../data", "/vagrant", disabled: true 
+  end
+
+  #Ansible-Cumulus02
+  config.vm.define "ansible-cl02" do |cl|
+     cl.vm.box = "CumulusCommunity/cumulus-vx"
+	 cl.vm.box_version = "3.6.0"
+	 cl.vm.box_check_update = false
+	 cl.vm.provider "virtualbox" do |vb|
+	   vb.name = "Ansible-Cumulus02(github_SysNet4Admin)"
+	   vb.customize ['modifyvm', :id, '--macaddress1', '080027000062']
+	   vb.customize ['modifyvm', :id, '--natnet1', '10.0.62.0/24']
+	 end
+	 cl.vm.host_name = "ansible-cl02"
+	 cl.vm.network "public_network", ip: "192.168.1.62"
+	 cl.vm.network "private_network", virtualbox__intnet: "swp2", auto_config: false
+	 cl.vm.network "private_network", virtualbox__intnet: "swp3", auto_config: false
+	 cl.vm.network "private_network", virtualbox__intnet: "swp4", auto_config: false
+	 cl.vm.network "forwarded_port", guest: 22, host: 60062, auto_correct: true, id: "ssh"
+	 cl.vm.synced_folder "../data", "/vagrant", disabled: true 
+  end  
+ 
+ #Ansible-Cumulus03
+  config.vm.define "ansible-cl03" do |cl|
+     cl.vm.box = "CumulusCommunity/cumulus-vx"
+	 cl.vm.box_version = "3.6.0"
+	 cl.vm.box_check_update = false
+	 cl.vm.provider "virtualbox" do |vb|
+	   vb.name = "Ansible-Cumulus03(github_SysNet4Admin)"
+	   vb.customize ['modifyvm', :id, '--macaddress1', '080027000063']
+	   vb.customize ['modifyvm', :id, '--natnet1', '10.0.63.0/24']
+	 end
+	 cl.vm.host_name = "ansible-cl03"
+	 cl.vm.network "public_network", ip: "192.168.1.63"
+	 cl.vm.network "private_network", virtualbox__intnet: "swp2", auto_config: false
+	 cl.vm.network "private_network", virtualbox__intnet: "swp3", auto_config: false
+	 cl.vm.network "private_network", virtualbox__intnet: "swp4", auto_config: false
+	 cl.vm.network "forwarded_port", guest: 22, host: 60063, auto_correct: true, id: "ssh"
+	 cl.vm.synced_folder "../data", "/vagrant", disabled: true 
+  end  
+  
+  #Ansible-Cumulus04
+  config.vm.define "ansible-cl04" do |cl|
+     cl.vm.box = "CumulusCommunity/cumulus-vx"
+	 cl.vm.box_version = "3.6.0"
+	 cl.vm.box_check_update = false
+	 cl.vm.provider "virtualbox" do |vb|
+	   vb.name = "Ansible-Cumulus04(github_SysNet4Admin)"
+	   vb.customize ['modifyvm', :id, '--macaddress1', '080027000064']
+	   vb.customize ['modifyvm', :id, '--natnet1', '10.0.64.0/24']
+	 end
+	 cl.vm.host_name = "ansible-cl04"
+	 cl.vm.network "public_network", ip: "192.168.1.64"
+	 cl.vm.network "private_network", virtualbox__intnet: "swp2", auto_config: false
+	 cl.vm.network "private_network", virtualbox__intnet: "swp3", auto_config: false
+	 cl.vm.network "private_network", virtualbox__intnet: "swp4", auto_config: false
+	 cl.vm.network "forwarded_port", guest: 22, host: 60064, auto_correct: true, id: "ssh"
+	 cl.vm.synced_folder "../data", "/vagrant", disabled: true 
+  end  
+ 
+  #================#
+  # Ansible Server #
+  #================#
+  
+  config.vm.define "ansible-server" do |cfg|
+    cfg.vm.box = "centos/7"
+ 	cfg.vm.provider "virtualbox" do |vb|
+	  vb.name = "Ansible-Server(github_SysNet4Admin)"
+	end
+	cfg.vm.host_name = "ansible-server"
+	cfg.vm.network "public_network", ip: "192.168.1.10"
+	cfg.vm.network "forwarded_port", guest: 22, host: 60010, auto_correct: true, id: "ssh"
+	cfg.vm.synced_folder "../data", "/vagrant", disabled: true
+	cfg.vm.provision "shell", inline: "yum install epel-release -y"
+	cfg.vm.provision "shell", inline: "yum install ansible -y"
+	cfg.vm.provision "file", source: "ansible_env_ready.yml", 
+	  destination: "ansible_env_ready.yml"
+	cfg.vm.provision "shell", inline: "ansible-playbook ansible_env_ready.yml"
+  end
+end

@@ -1,0 +1,4 @@
+- name: remove epel-release
+  action: "{{ ansible_pkg_mgr }} name=epel-release state=absent"
+- name: remove nginx web server
+  action: "{{ ansible_pkg_mgr }} name=nginx state=absent"

@@ -1,0 +1,6 @@
+---
+- name: install nginx for any linux
+  include_tasks: "{{ lnx_name }}.yml"
+
+- name: configure nginx 
+  include_tasks: config.yml

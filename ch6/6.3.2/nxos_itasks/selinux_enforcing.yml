@@ -1,0 +1,2 @@
+- name: selinux change to enforcing
+  selinux: policy=targeted state=enforcing

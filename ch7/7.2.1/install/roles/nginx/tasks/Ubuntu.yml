@@ -1,0 +1,2 @@
+- name: install nginx web server for {{ ansible_distribution }}
+  action: "{{ ansible_pkg_mgr }} name=nginx state=present update_cache=yes"

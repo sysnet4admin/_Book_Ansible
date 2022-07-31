@@ -1,0 +1,450 @@
+[vagrant@ansible-server ~]$ anp jdauphant.nginx.yml
+
+PLAY [Install nginx on the nodes by jdauphant] ***************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************
+ok: [192.168.1.101]
+ok: [192.168.1.105]
+ok: [192.168.1.102]
+ok: [192.168.1.104]
+ok: [192.168.1.103]
+ok: [192.168.1.203]
+ok: [192.168.1.202]
+ok: [192.168.1.201]
+ok: [192.168.1.204]
+ok: [192.168.1.205]
+
+TASK [jdauphant.nginx : include_vars] ************************************************************************************************************
+ok: [192.168.1.101] => (item=/home/vagrant/.ansible/roles/jdauphant.nginx/vars/../vars/empty.yml)
+ok: [192.168.1.102] => (item=/home/vagrant/.ansible/roles/jdauphant.nginx/vars/../vars/empty.yml)
+ok: [192.168.1.103] => (item=/home/vagrant/.ansible/roles/jdauphant.nginx/vars/../vars/empty.yml)
+ok: [192.168.1.104] => (item=/home/vagrant/.ansible/roles/jdauphant.nginx/vars/../vars/empty.yml)
+ok: [192.168.1.105] => (item=/home/vagrant/.ansible/roles/jdauphant.nginx/vars/../vars/empty.yml)
+ok: [192.168.1.201] => (item=/home/vagrant/.ansible/roles/jdauphant.nginx/vars/../vars/Debian.yml)
+ok: [192.168.1.202] => (item=/home/vagrant/.ansible/roles/jdauphant.nginx/vars/../vars/Debian.yml)
+ok: [192.168.1.203] => (item=/home/vagrant/.ansible/roles/jdauphant.nginx/vars/../vars/Debian.yml)
+ok: [192.168.1.204] => (item=/home/vagrant/.ansible/roles/jdauphant.nginx/vars/../vars/Debian.yml)
+ok: [192.168.1.205] => (item=/home/vagrant/.ansible/roles/jdauphant.nginx/vars/../vars/Debian.yml)
+
+TASK [jdauphant.nginx : include_tasks] ***********************************************************************************************************
+skipping: [192.168.1.201]
+skipping: [192.168.1.202]
+skipping: [192.168.1.203]
+skipping: [192.168.1.204]
+skipping: [192.168.1.205]
+included: /home/vagrant/.ansible/roles/jdauphant.nginx/tasks/selinux.yml for 192.168.1.101, 192.168.1.102, 192.168.1.103, 192.168.1.104, 192.168.1.105
+
+TASK [jdauphant.nginx : Install the selinux python module] ***************************************************************************************
+ok: [192.168.1.103] => (item=libselinux-python)
+ok: [192.168.1.101] => (item=libselinux-python)
+ok: [192.168.1.105] => (item=libselinux-python)
+ok: [192.168.1.104] => (item=libselinux-python)
+ok: [192.168.1.102] => (item=libselinux-python)
+changed: [192.168.1.101] => (item=libsemanage-python)
+changed: [192.168.1.105] => (item=libsemanage-python)
+changed: [192.168.1.102] => (item=libsemanage-python)
+changed: [192.168.1.104] => (item=libsemanage-python)
+changed: [192.168.1.103] => (item=libsemanage-python)
+
+TASK [jdauphant.nginx : Install the selinux python module] ***************************************************************************************
+skipping: [192.168.1.101] => (item=python-selinux)
+skipping: [192.168.1.101] => (item=python-semanage)
+skipping: [192.168.1.102] => (item=python-selinux)
+skipping: [192.168.1.102] => (item=python-semanage)
+skipping: [192.168.1.103] => (item=python-selinux)
+skipping: [192.168.1.103] => (item=python-semanage)
+skipping: [192.168.1.104] => (item=python-selinux)
+skipping: [192.168.1.104] => (item=python-semanage)
+skipping: [192.168.1.105] => (item=python-selinux)
+skipping: [192.168.1.105] => (item=python-semanage)
+
+TASK [jdauphant.nginx : Set SELinux boolean to allow nginx to set rlimit] ************************************************************************
+changed: [192.168.1.101]
+changed: [192.168.1.102]
+changed: [192.168.1.104]
+changed: [192.168.1.103]
+changed: [192.168.1.105]
+
+TASK [jdauphant.nginx : include_tasks] ***********************************************************************************************************
+skipping: [192.168.1.101]
+skipping: [192.168.1.102]
+skipping: [192.168.1.103]
+skipping: [192.168.1.104]
+skipping: [192.168.1.105]
+skipping: [192.168.1.201]
+skipping: [192.168.1.202]
+skipping: [192.168.1.203]
+skipping: [192.168.1.204]
+skipping: [192.168.1.205]
+
+TASK [jdauphant.nginx : include_tasks] ***********************************************************************************************************
+included: /home/vagrant/.ansible/roles/jdauphant.nginx/tasks/installation.packages.yml for 192.168.1.101, 192.168.1.102, 192.168.1.103, 192.168.1.104, 192.168.1.105, 192.168.1.201, 192.168.1.202, 192.168.1.203, 192.168.1.204, 192.168.1.205
+
+TASK [jdauphant.nginx : Install the epel packages for EL distributions] **************************************************************************
+changed: [192.168.1.101]
+changed: [192.168.1.103]
+skipping: [192.168.1.201]
+changed: [192.168.1.104]
+changed: [192.168.1.105]
+skipping: [192.168.1.202]
+skipping: [192.168.1.203]
+changed: [192.168.1.102]
+skipping: [192.168.1.204]
+skipping: [192.168.1.205]
+
+TASK [jdauphant.nginx : Install the nginx packages from official repo for EL distributions] ******************************************************
+skipping: [192.168.1.101] => (item=[])
+skipping: [192.168.1.102] => (item=[])
+skipping: [192.168.1.103] => (item=[])
+skipping: [192.168.1.104] => (item=[])
+skipping: [192.168.1.105] => (item=[])
+skipping: [192.168.1.201] => (item=[])
+skipping: [192.168.1.202] => (item=[])
+skipping: [192.168.1.203] => (item=[])
+skipping: [192.168.1.204] => (item=[])
+skipping: [192.168.1.205] => (item=[])
+
+TASK [jdauphant.nginx : Install the nginx packages for all other distributions] ******************************************************************
+changed: [192.168.1.103] => (item=nginx)
+changed: [192.168.1.104] => (item=nginx)
+changed: [192.168.1.105] => (item=nginx)
+changed: [192.168.1.101] => (item=nginx)
+changed: [192.168.1.102] => (item=nginx)
+changed: [192.168.1.201] => (item=nginx)
+changed: [192.168.1.202] => (item=nginx)
+changed: [192.168.1.203] => (item=nginx)
+changed: [192.168.1.204] => (item=nginx)
+changed: [192.168.1.205] => (item=nginx)
+
+TASK [jdauphant.nginx : Create the directories for site specific configurations] *****************************************************************
+changed: [192.168.1.101] => (item=sites-available)
+changed: [192.168.1.103] => (item=sites-available)
+changed: [192.168.1.104] => (item=sites-available)
+changed: [192.168.1.105] => (item=sites-available)
+changed: [192.168.1.102] => (item=sites-available)
+changed: [192.168.1.103] => (item=sites-enabled)
+changed: [192.168.1.101] => (item=sites-enabled)
+changed: [192.168.1.102] => (item=sites-enabled)
+changed: [192.168.1.104] => (item=sites-enabled)
+changed: [192.168.1.105] => (item=sites-enabled)
+changed: [192.168.1.103] => (item=auth_basic)
+changed: [192.168.1.104] => (item=auth_basic)
+changed: [192.168.1.102] => (item=auth_basic)
+changed: [192.168.1.105] => (item=auth_basic)
+changed: [192.168.1.101] => (item=auth_basic)
+ok: [192.168.1.103] => (item=conf.d)
+ok: [192.168.1.105] => (item=conf.d)
+ok: [192.168.1.102] => (item=conf.d)
+ok: [192.168.1.104] => (item=conf.d)
+ok: [192.168.1.101] => (item=conf.d)
+changed: [192.168.1.103] => (item=conf.d/stream)
+changed: [192.168.1.105] => (item=conf.d/stream)
+changed: [192.168.1.101] => (item=conf.d/stream)
+changed: [192.168.1.102] => (item=conf.d/stream)
+changed: [192.168.1.104] => (item=conf.d/stream)
+changed: [192.168.1.103] => (item=snippets)
+changed: [192.168.1.101] => (item=snippets)
+changed: [192.168.1.105] => (item=snippets)
+changed: [192.168.1.104] => (item=snippets)
+changed: [192.168.1.102] => (item=snippets)
+changed: [192.168.1.103] => (item=modules-available)
+changed: [192.168.1.102] => (item=modules-available)
+changed: [192.168.1.101] => (item=modules-available)
+changed: [192.168.1.104] => (item=modules-available)
+changed: [192.168.1.105] => (item=modules-available)
+changed: [192.168.1.102] => (item=modules-enabled)
+changed: [192.168.1.103] => (item=modules-enabled)
+changed: [192.168.1.101] => (item=modules-enabled)
+changed: [192.168.1.105] => (item=modules-enabled)
+changed: [192.168.1.104] => (item=modules-enabled)
+ok: [192.168.1.201] => (item=sites-available)
+ok: [192.168.1.202] => (item=sites-available)
+ok: [192.168.1.203] => (item=sites-available)
+ok: [192.168.1.204] => (item=sites-available)
+ok: [192.168.1.201] => (item=sites-enabled)
+ok: [192.168.1.205] => (item=sites-available)
+ok: [192.168.1.202] => (item=sites-enabled)
+ok: [192.168.1.203] => (item=sites-enabled)
+ok: [192.168.1.204] => (item=sites-enabled)
+changed: [192.168.1.201] => (item=auth_basic)
+changed: [192.168.1.202] => (item=auth_basic)
+ok: [192.168.1.205] => (item=sites-enabled)
+changed: [192.168.1.203] => (item=auth_basic)
+ok: [192.168.1.201] => (item=conf.d)
+changed: [192.168.1.204] => (item=auth_basic)
+changed: [192.168.1.205] => (item=auth_basic)
+ok: [192.168.1.203] => (item=conf.d)
+ok: [192.168.1.202] => (item=conf.d)
+changed: [192.168.1.203] => (item=conf.d/stream)
+changed: [192.168.1.202] => (item=conf.d/stream)
+ok: [192.168.1.205] => (item=conf.d)
+changed: [192.168.1.201] => (item=conf.d/stream)
+ok: [192.168.1.204] => (item=conf.d)
+changed: [192.168.1.202] => (item=snippets)
+changed: [192.168.1.201] => (item=snippets)
+changed: [192.168.1.204] => (item=conf.d/stream)
+changed: [192.168.1.203] => (item=snippets)
+changed: [192.168.1.205] => (item=conf.d/stream)
+changed: [192.168.1.205] => (item=snippets)
+changed: [192.168.1.203] => (item=modules-available)
+changed: [192.168.1.202] => (item=modules-available)
+changed: [192.168.1.204] => (item=snippets)
+changed: [192.168.1.201] => (item=modules-available)
+changed: [192.168.1.201] => (item=modules-enabled)
+changed: [192.168.1.203] => (item=modules-enabled)
+changed: [192.168.1.202] => (item=modules-enabled)
+changed: [192.168.1.205] => (item=modules-available)
+changed: [192.168.1.204] => (item=modules-available)
+changed: [192.168.1.205] => (item=modules-enabled)
+changed: [192.168.1.204] => (item=modules-enabled)
+
+TASK [jdauphant.nginx : Ensure log directory exist] **********************************************************************************************
+changed: [192.168.1.101]
+changed: [192.168.1.102]
+changed: [192.168.1.103]
+changed: [192.168.1.104]
+changed: [192.168.1.105]
+ok: [192.168.1.201]
+ok: [192.168.1.202]
+ok: [192.168.1.203]
+ok: [192.168.1.204]
+ok: [192.168.1.205]
+
+TASK [jdauphant.nginx : include_tasks] ***********************************************************************************************************
+included: /home/vagrant/.ansible/roles/jdauphant.nginx/tasks/remove-defaults.yml for 192.168.1.101, 192.168.1.102, 192.168.1.103, 192.168.1.104, 192.168.1.105, 192.168.1.201, 192.168.1.202, 192.168.1.203, 192.168.1.204, 192.168.1.205
+
+TASK [jdauphant.nginx : Disable the default site] ************************************************************************************************
+ok: [192.168.1.101]
+ok: [192.168.1.103]
+ok: [192.168.1.102]
+ok: [192.168.1.104]
+ok: [192.168.1.105]
+changed: [192.168.1.201]
+changed: [192.168.1.202]
+changed: [192.168.1.203]
+changed: [192.168.1.204]
+changed: [192.168.1.205]
+
+TASK [jdauphant.nginx : Remove the default configuration] ****************************************************************************************
+ok: [192.168.1.101]
+ok: [192.168.1.102]
+ok: [192.168.1.103]
+ok: [192.168.1.104]
+ok: [192.168.1.105]
+ok: [192.168.1.201]
+ok: [192.168.1.202]
+ok: [192.168.1.203]
+ok: [192.168.1.204]
+ok: [192.168.1.205]
+
+TASK [jdauphant.nginx : include_tasks] ***********************************************************************************************************
+skipping: [192.168.1.101]
+skipping: [192.168.1.102]
+skipping: [192.168.1.103]
+skipping: [192.168.1.104]
+skipping: [192.168.1.105]
+skipping: [192.168.1.201]
+skipping: [192.168.1.202]
+skipping: [192.168.1.203]
+skipping: [192.168.1.204]
+skipping: [192.168.1.205]
+
+TASK [jdauphant.nginx : Remove unwanted sites] ***************************************************************************************************
+
+TASK [jdauphant.nginx : Remove unwanted conf] ****************************************************************************************************
+
+TASK [jdauphant.nginx : Remove unwanted snippets] ************************************************************************************************
+
+TASK [jdauphant.nginx : Remove unwanted auth_basic_files] ****************************************************************************************
+
+TASK [jdauphant.nginx : Copy the nginx configuration file] ***************************************************************************************
+changed: [192.168.1.105]
+changed: [192.168.1.102]
+changed: [192.168.1.103]
+changed: [192.168.1.101]
+changed: [192.168.1.104]
+changed: [192.168.1.201]
+changed: [192.168.1.202]
+changed: [192.168.1.203]
+changed: [192.168.1.204]
+changed: [192.168.1.205]
+
+TASK [jdauphant.nginx : Ensure auth_basic files created] *****************************************************************************************
+
+TASK [jdauphant.nginx : Create the configurations for sites] *************************************************************************************
+changed: [192.168.1.101] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.102] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.103] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.104] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.105] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.201] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.202] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.203] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.204] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.205] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+
+TASK [jdauphant.nginx : Create links for sites-enabled] ******************************************************************************************
+changed: [192.168.1.101] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.102] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.103] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.104] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.105] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.201] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.202] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.203] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.204] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+changed: [192.168.1.205] => (item={'value': [u'listen 80 default_server', u'server_name _', u'root "/usr/share/nginx/html"', u'index index.html'], 'key': u'default'})
+
+TASK [jdauphant.nginx : Create the configurations for independent config file] *******************************************************************
+
+TASK [jdauphant.nginx : Create configuration snippets] *******************************************************************************************
+
+TASK [jdauphant.nginx : Create the configurations for independent config file for streams] *******************************************************
+
+TASK [jdauphant.nginx : include_tasks] ***********************************************************************************************************
+skipping: [192.168.1.101]
+skipping: [192.168.1.102]
+skipping: [192.168.1.103]
+skipping: [192.168.1.104]
+skipping: [192.168.1.105]
+skipping: [192.168.1.201]
+skipping: [192.168.1.202]
+skipping: [192.168.1.203]
+skipping: [192.168.1.204]
+skipping: [192.168.1.205]
+
+TASK [jdauphant.nginx : include_tasks] ***********************************************************************************************************
+skipping: [192.168.1.101]
+skipping: [192.168.1.102]
+skipping: [192.168.1.103]
+skipping: [192.168.1.104]
+skipping: [192.168.1.105]
+skipping: [192.168.1.201]
+skipping: [192.168.1.202]
+skipping: [192.168.1.203]
+skipping: [192.168.1.204]
+skipping: [192.168.1.205]
+
+TASK [jdauphant.nginx : Start the nginx service] *************************************************************************************************
+changed: [192.168.1.103]
+changed: [192.168.1.105]
+changed: [192.168.1.101]
+changed: [192.168.1.102]
+changed: [192.168.1.104]
+changed: [192.168.1.201]
+changed: [192.168.1.204]
+changed: [192.168.1.202]
+changed: [192.168.1.203]
+changed: [192.168.1.205]
+
+RUNNING HANDLER [jdauphant.nginx : restart nginx] ************************************************************************************************
+changed: [192.168.1.105] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.102] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.103] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.101] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.104] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.201] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.202] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.203] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.204] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.205] => {
+    "msg": "checking config first"
+}
+
+RUNNING HANDLER [jdauphant.nginx : reload nginx] *************************************************************************************************
+changed: [192.168.1.201] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.202] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.203] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.204] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.205] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.101] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.102] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.103] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.104] => {
+    "msg": "checking config first"
+}
+changed: [192.168.1.105] => {
+    "msg": "checking config first"
+}
+
+RUNNING HANDLER [jdauphant.nginx : check nginx configuration] ************************************************************************************
+ok: [192.168.1.101]
+ok: [192.168.1.104]
+ok: [192.168.1.103]
+ok: [192.168.1.105]
+ok: [192.168.1.102]
+ok: [192.168.1.201]
+ok: [192.168.1.202]
+ok: [192.168.1.203]
+ok: [192.168.1.204]
+ok: [192.168.1.205]
+
+RUNNING HANDLER [jdauphant.nginx : restart nginx - after config check] ***************************************************************************
+changed: [192.168.1.105]
+changed: [192.168.1.102]
+changed: [192.168.1.103]
+changed: [192.168.1.101]
+changed: [192.168.1.104]
+changed: [192.168.1.201]
+changed: [192.168.1.202]
+changed: [192.168.1.203]
+changed: [192.168.1.204]
+changed: [192.168.1.205]
+
+RUNNING HANDLER [jdauphant.nginx : reload nginx - after config check] ****************************************************************************
+changed: [192.168.1.201]
+changed: [192.168.1.202]
+changed: [192.168.1.203]
+changed: [192.168.1.204]
+changed: [192.168.1.205]
+changed: [192.168.1.101]
+changed: [192.168.1.102]
+changed: [192.168.1.103]
+changed: [192.168.1.104]
+changed: [192.168.1.105]
+
+PLAY RECAP ***************************************************************************************************************************************
+192.168.1.101              : ok=22   changed=14   unreachable=0    failed=0
+192.168.1.102              : ok=22   changed=14   unreachable=0    failed=0
+192.168.1.103              : ok=22   changed=14   unreachable=0    failed=0
+192.168.1.104              : ok=22   changed=14   unreachable=0    failed=0
+192.168.1.105              : ok=22   changed=14   unreachable=0    failed=0
+192.168.1.201              : ok=18   changed=11   unreachable=0    failed=0
+192.168.1.202              : ok=18   changed=11   unreachable=0    failed=0
+192.168.1.203              : ok=18   changed=11   unreachable=0    failed=0
+192.168.1.204              : ok=18   changed=11   unreachable=0    failed=0
+192.168.1.205              : ok=18   changed=11   unreachable=0    failed=0

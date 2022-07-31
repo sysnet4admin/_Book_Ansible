@@ -1,0 +1,18 @@
+{% if ansible_distribution == 'Ubuntu' %}
+   [ OS : Ubuntu ]
+    >> dpkg -l | grep nginx
+    OR
+    >> service nginx status
+{% elif ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7' %}
+   [ OS : CentOS ver7 ]
+    >> yum list installed | grep nginx
+    OR
+    >> systemctl status nginx
+{% elif ansible_distribution == 'CentOS' and ansible_distribution_major_version < '7' %}
+   [ OS : CentOS ver6 ]
+    >> yum list installed | grep nginx
+    OR
+    >> service nginx status
+{% else %}
+    >> service nginx status (* Gernally)
+{% endif %}

@@ -1,0 +1,14 @@
+---
+- name: Remove nginx on the nodes
+  hosts: nodes
+  become: yes
+
+  tasks:
+    - name: nginx for CentOS
+      include_tasks: CentOS_remo.yml
+      when: ansible_distribution == 'CentOS'
+    
+    - name: nginx for Ubuntu
+      include_tasks: Ubuntu_remo.yml
+      when: ansible_distribution == 'Ubuntu'
+

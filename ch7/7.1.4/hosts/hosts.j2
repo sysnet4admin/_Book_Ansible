@@ -1,0 +1,7 @@
+#Create by template at {{ ansible_date_time.iso8601 }}
+
+127.0.0.1 {{ ansible_hostname }}
+192.168.1.10 ansible-server
+{% for ip in range(nu | int) %}
+{{ groups.nodes[ip] }} node{{ groups.nodes[ip][-3:] }}
+{% endfor %}

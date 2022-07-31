@@ -1,0 +1,12 @@
+---
+- name: Show facts for NXOS devices
+  hosts: nxos
+  gather_facts: no
+  vars:
+    ansible_user: admin  
+    ansible_password: vagrant
+
+  tasks:
+    - nxos_facts:
+      register: facts_date
+    - debug: var=facts_data

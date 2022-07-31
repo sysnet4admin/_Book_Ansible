@@ -1,0 +1,123 @@
+c:\HashiCorp>vagrant provision ansible-server
+==> ansible-server: Running provisioner: shell...
+    ansible-server: Running: inline script
+    ansible-server: Loaded plugins: fastestmirror
+    ansible-server: Loading mirror speeds from cached hostfile
+    ansible-server:  * base: data.nicehosting.co.kr
+    ansible-server:  * extras: data.nicehosting.co.kr
+    ansible-server:  * updates: data.nicehosting.co.kr
+    ansible-server: Package ansible-2.4.2.0-2.el7.noarch already installed and latest version
+    ansible-server: Nothing to do
+==> ansible-server: Running provisioner: file...
+==> ansible-server: Running provisioner: shell...
+    ansible-server: Running: inline script
+    ansible-server:
+    ansible-server: PLAY [Setup for the Ansible's Environment] **************************************
+    ansible-server:
+    ansible-server: TASK [Add "/etc/ansible/hosts"] ************************************************
+    ansible-server: changed: [localhost]
+    ansible-server:
+    ansible-server: TASK [Install epel-release] ****************************************************
+    ansible-server: changed: [localhost]
+    ansible-server:
+    ansible-server: TASK [Install pip] *************************************************************
+    ansible-server: changed: [localhost]
+    ansible-server:
+    ansible-server: TASK [Install pywinrm] *********************************************************
+    ansible-server: changed: [localhost]
+    ansible-server:
+    ansible-server: TASK [Install sshpass for Authentication] **************************************
+    ansible-server: ok: [localhost]
+    ansible-server:
+    ansible-server: TASK [Create vim env's directories & files] ************************************
+    ansible-server: changed: [localhost] => (item=mkdir -p /home/vagrant/.vim/autoload /home/vagrant/.vim/bundle)
+    ansible-server: changed: [localhost] => (item=touch /home/vagrant/.vimrc)
+    ansible-server: changed: [localhost] => (item=touch /home/vagrant/.bashrc)
+    ansible-server:
+    ansible-server: TASK [Install vim-enhanced] ****************************************************
+    ansible-server:  [WARNING]: Consider using file module with state=directory rather than running
+    ansible-server: mkdir
+    ansible-server:  [WARNING]: Consider using file module with state=touch rather than running
+    ansible-server: touch
+    ansible-server: ok: [localhost]
+    ansible-server:
+    ansible-server: TASK [Install git] *************************************************************
+    ansible-server: ok: [localhost]
+    ansible-server:
+    ansible-server: TASK [Download pathogen.vim] ***************************************************
+    ansible-server: changed: [localhost]
+    ansible-server:
+    ansible-server: TASK [Git clone vim-ansible-yaml] **********************************************
+    ansible-server:  [WARNING]: Consider using get_url or uri module rather than running curl
+    ansible-server: ok: [localhost]
+    ansible-server:
+    ansible-server: TASK [Configure vimrc] *********************************************************
+    ansible-server: ok: [localhost] => (item=set number)
+    ansible-server: ok: [localhost] => (item=execute pathogen#infect())
+    ansible-server: ok: [localhost] => (item=syntax on)
+    ansible-server:
+    ansible-server: TASK [Configure Bashrc] ********************************************************
+    ansible-server: ok: [localhost] => (item=alias ans='ansible')
+    ansible-server: ok: [localhost] => (item=alias anp='ansible-playbook')
+    ansible-server:
+    ansible-server: PLAY RECAP *********************************************************************
+    ansible-server: localhost                  : ok=12   changed=6    unreachable=0    failed=0
+==> ansible-server: Running provisioner: shell...
+    ansible-server: Running: C:/Users/HOONJO~1/AppData/Local/Temp/vagrant-shell20180505-18324-ptlvg3.sh
+    ansible-server: Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.13.0-144-generic x86_64)
+    ansible-server:
+    ansible-server:  * Documentation:  https://help.ubuntu.com/
+    ansible-server:
+    ansible-server:   System information as of Sat May  5 02:51:15 UTC 2018
+    ansible-server:
+    ansible-server:   System load:  0.08              Processes:           75
+    ansible-server:   Usage of /:   3.6% of 39.34GB   Users logged in:     0
+    ansible-server:   Memory usage: 28%               IP address for eth0: 10.0.2.15
+    ansible-server:   Swap usage:   0%                IP address for eth1: 192.168.1.14
+    ansible-server:
+    ansible-server:   Graph this data and manage this system at:
+    ansible-server:     https://landscape.canonical.com/
+    ansible-server:
+    ansible-server:   Get cloud support with Ubuntu Advantage Cloud Guest:
+    ansible-server:     http://www.ubuntu.com/business/services/cloud
+    ansible-server:
+    ansible-server: New release '16.04.4 LTS' available.
+    ansible-server: Run 'do-release-upgrade' to upgrade to it.
+    ansible-server: Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.13.0-144-generic x86_64)
+    ansible-server:
+    ansible-server:  * Documentation:  https://help.ubuntu.com/
+    ansible-server:
+    ansible-server:   System information as of Sat May  5 02:51:15 UTC 2018
+    ansible-server:
+    ansible-server:   System load:  0.0               Processes:           75
+    ansible-server:   Usage of /:   3.6% of 39.34GB   Users logged in:     0
+    ansible-server:   Memory usage: 28%               IP address for eth0: 10.0.2.15
+    ansible-server:   Swap usage:   0%                IP address for eth1: 192.168.1.15
+    ansible-server:
+    ansible-server:   Graph this data and manage this system at:
+    ansible-server:     https://landscape.canonical.com/
+    ansible-server:
+    ansible-server:   Get cloud support with Ubuntu Advantage Cloud Guest:
+    ansible-server:     http://www.ubuntu.com/business/services/cloud
+    ansible-server:
+    ansible-server: New release '16.04.4 LTS' available.
+    ansible-server: Run 'do-release-upgrade' to upgrade to it.
+    ansible-server: Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.13.0-144-generic x86_64)
+    ansible-server:
+    ansible-server:  * Documentation:  https://help.ubuntu.com/
+    ansible-server:
+    ansible-server:   System information as of Sat May  5 02:51:16 UTC 2018
+    ansible-server:
+    ansible-server:   System load:  0.0               Processes:           75
+    ansible-server:   Usage of /:   3.6% of 39.34GB   Users logged in:     0
+    ansible-server:   Memory usage: 28%               IP address for eth0: 10.0.2.15
+    ansible-server:   Swap usage:   0%                IP address for eth1: 192.168.1.16
+    ansible-server:
+    ansible-server:   Graph this data and manage this system at:
+    ansible-server:     https://landscape.canonical.com/
+    ansible-server:
+    ansible-server:   Get cloud support with Ubuntu Advantage Cloud Guest:
+    ansible-server:     http://www.ubuntu.com/business/services/cloud
+    ansible-server:
+    ansible-server: New release '16.04.4 LTS' available.
+    ansible-server: Run 'do-release-upgrade' to upgrade to it.

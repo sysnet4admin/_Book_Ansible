@@ -1,0 +1,10 @@
+---
+- name: Setup NXOS timezone with ntp configuration
+  hosts: NXOS
+  gather_facts: no
+
+  tasks:
+    - name: ntp configuration
+      nxos_ntp:
+        server: 192.168.1.10
+        vrf_name: management

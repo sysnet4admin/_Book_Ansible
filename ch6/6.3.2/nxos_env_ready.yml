@@ -1,0 +1,23 @@
+---
+- name: Setup for the ansible's Environment
+  hosts: localhost
+  gather_facts: no
+  become: yes
+  
+  tasks:
+    - name: add "/etc/ansible/hosts"
+      lineinfile: 
+        path: /etc/ansible/hosts
+        line: "{{ item }}"
+      with_items:
+        - "[nxos]"
+        - "192.168.1.251 ansible_connection=network_cli ansible_network_os=nxos"
+        - "192.168.1.252 ansible_connection=network_cli ansible_network_os=nxos" 
+          
+    - name: generate sshkey
+      become: yes
+      become_user: vagrant
+      shell: "{{ item }}"
+      with_items:
+        - "ssh-keyscan 192.168.1.251 >> ~/.ssh/known_hosts"
+        - "ssh-keyscan 192.168.1.252 >> ~/.ssh/known_hosts"

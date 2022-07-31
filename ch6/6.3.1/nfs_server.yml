@@ -1,0 +1,17 @@
+- name: make nfs_shared directory
+  file:
+    path: "{{ ansible_user_dir }}/nfs_shared"
+    state: directory
+    mode: 0777
+
+- name: configure /etc/exports
+  become: yes
+  lineinfile:
+    path: /etc/exports
+    line: "{{ ansible_user_dir }}/nfs_shared 192.168.1.0/24(rw,sync)"
+
+- name: nfs service restart
+  become: yes
+  service:
+    name: nfs
+    state: restarted

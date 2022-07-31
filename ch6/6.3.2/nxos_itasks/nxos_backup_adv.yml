@@ -1,0 +1,8 @@
+- name: collect facts from nxos
+  nxos_facts:
+- name: running-config backup
+  nxos_command:
+    commands: 
+      'copy running-config 
+       tftp://{{ ansible_eth1.ipv4.address }}/{{ ansible_net_hostname }}-RC-{{ ansible_date_time.iso8601 }}   
+       vrf management'

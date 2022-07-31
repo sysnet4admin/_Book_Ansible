@@ -1,0 +1,21 @@
+---
+- name: Environment
+  hosts: localhost
+  debugger: on_failed
+
+  environment:
+    PATH: "{{ ansible_env.PATH }}:Custome(ex: JAVA)/PATH/Location"
+    http_proxy: http://proxy.example.com:8080
+
+  tasks:
+    - name: echo $PATH
+      shell: wrong $PATH
+      register: PATH
+
+    - name: show $PATH
+      debug:
+        msg: "{{ PATH.stdout }}"
+
+    - name: show env_all_n_proxy
+      debug:
+        msg: "{{ ansible_env }}"

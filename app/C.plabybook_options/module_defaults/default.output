@@ -1,0 +1,26 @@
+[vagrant@ansible-server ~]$ anp default.yml
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [file] ********************************************************************
+changed: [localhost]
+
+TASK [file] ********************************************************************
+changed: [localhost]
+
+TASK [file] ********************************************************************
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=4    changed=3    unreachable=0    failed=0
+
+[vagrant@ansible-server ~]$ ls -rlt /tmp
+total 0
+drwx------. 3 root    root    17 Jul 26 05:57 systemd-private-863c6615b822417188d786cab167ef9f-chronyd.service-CLOkQs
+drwx------. 3 root    root    17 Jul 27 00:36 systemd-private-813f0647d2f84d4db8f5737333f32f20-chronyd.service-uqhLow
+-rwxr-xr-x. 1 vagrant vagrant  0 Aug  1 07:30 file1
+-rwxr-xr-x. 1 vagrant vagrant  0 Aug  1 07:30 file2
+-rwxr-xr-x. 1 vagrant vagrant  0 Aug  1 07:30 file3

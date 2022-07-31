@@ -1,0 +1,7 @@
+---
+- name: Install nginx on the nodes by jdauphant
+  hosts: nodes
+  become: yes
+
+  roles:
+    - role: jdauphant.nginx 

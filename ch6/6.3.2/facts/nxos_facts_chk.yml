@@ -1,0 +1,13 @@
+---
+- name: Check NXOS's facts 
+  hosts: nxos
+  gather_facts: no
+  vars:
+    ansible_user: admin  
+    ansible_password: vagrant
+
+  tasks:
+    - debug:
+        msg:
+          - "ansible_all_ipv4_addresses[0]: {{  ansible_all_ipv4_addresses[0] }}"
+          - "ansible_all_ipv4_addresses[1]: {{  ansible_all_ipv4_addresses[1] }}"

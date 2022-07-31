@@ -1,0 +1,18 @@
+---
+- name: Collect nxos_facts for each device
+  hosts: nxos
+  gather_facts: no
+  vars:
+    ansible_user: admin
+    ansible_password: vagrant
+
+  tasks:
+    - name: generate nxos_facts
+      nxos_facts:
+      register: facts
+
+    - name: save nxos_facts
+      local_action:
+        module: copy
+        content: "{{ facts | to_nice_json }}"
+        dest: ./{{ ansible_net_hostname }}_facts_by_collector.txt

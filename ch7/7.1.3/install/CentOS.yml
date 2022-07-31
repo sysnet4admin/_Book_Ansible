@@ -1,0 +1,6 @@
+- name: install epel-release
+  action: "{{ ansible_pkg_mgr }} name=epel-release state=latest"
+- name: install nginx web server
+  action: "{{ ansible_pkg_mgr }} name=nginx state=present"
+  notify:
+    - restart nginx web server

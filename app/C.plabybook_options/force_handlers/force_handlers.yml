@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+#  force_handlers: yes
+  become: true
+
+  tasks:
+    - name: install tree
+      yum: name=tree state=present
+      notify: handler_status
+
+    - name: install unknown package
+      yum: name=treeppp state=present
+
+  handlers:
+    - name: handler_status
+      debug:
+        msg: "handler on"

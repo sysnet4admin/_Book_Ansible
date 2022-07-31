@@ -1,0 +1,13 @@
+---
+- name: Config lldp service
+  hosts: vyos
+  gather_facts: no
+
+  tasks:
+    - name: enable lldp service
+      vyos_lldp:
+        state: present
+
+    - name: save running-config
+      vyos_config:
+        save: yes

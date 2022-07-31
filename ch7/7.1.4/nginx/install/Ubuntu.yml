@@ -1,0 +1,4 @@
+- name: install nginx web server
+  action: "{{ ansible_pkg_mgr }} name=nginx state=present update_cache=yes"
+  notify: 
+    - restart nginx web server 

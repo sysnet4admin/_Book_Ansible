@@ -1,0 +1,14 @@
+---
+- name: Collect facts for each node
+  hosts: nodes
+
+  tasks:
+    - name: generate facts
+      setup:
+      register: facts
+
+    - name: save facts
+      local_action:
+        module: copy
+        content: "{{ facts | to_nice_json }}"
+        dest: ./{{ ansible_hostname }}_facts_by_collector.txt

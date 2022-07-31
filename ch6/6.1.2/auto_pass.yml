@@ -1,0 +1,19 @@
+---
+- name: Create authority between server and nodes
+  hosts: nodes
+  connection: local
+  serial: 1
+  gather_facts: no
+
+  tasks:
+    - name: ssh-keyscan for known_hosts file
+      command: /usr/bin/ssh-keyscan -t ecdsa {{ ansible_host }}
+      register: keyscan
+
+    - name: input key
+      lineinfile:      
+        path: ~/.ssh/known_hosts
+        line: "{{ item }}"
+        create: yes     
+      with_items:
+        - "{{ keyscan.stdout_lines }}"

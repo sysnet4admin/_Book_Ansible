@@ -1,0 +1,84 @@
+[vagrant@ansible-server ~]$ anp force_handlers.yml
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [install tree] ************************************************************
+changed: [localhost]
+
+TASK [install unknown package] *************************************************
+fatal: [localhost]: FAILED! => {"changed": false, "msg": "No package matching 'treeppp' found available, installed or updated", "rc": 126, "results": ["No package matching 'treeppp' found available, installed or updated"]}
+
+RUNNING HANDLER [handler_status] ***********************************************
+        to retry, use: --limit @/home/vagrant/force_handlers.retry
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=1
+
+[vagrant@ansible-server ~]$
+[vagrant@ansible-server ~]$
+[vagrant@ansible-server ~]$ sudo yum remove tree -y
+Loaded plugins: fastestmirror
+Resolving Dependencies
+--> Running transaction check
+---> Package tree.x86_64 0:1.6.0-10.el7 will be erased
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package        Arch             Version                  Repository       Size
+================================================================================
+Removing:
+ tree           x86_64           1.6.0-10.el7             @base            87 k
+
+Transaction Summary
+================================================================================
+Remove  1 Package
+
+Installed size: 87 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Erasing    : tree-1.6.0-10.el7.x86_64                                     1/1
+  Verifying  : tree-1.6.0-10.el7.x86_64                                     1/1
+
+Removed:
+  tree.x86_64 0:1.6.0-10.el7
+
+Complete!
+[vagrant@ansible-server ~]$
+[vagrant@ansible-server ~]$
+[vagrant@ansible-server ~]$
+[vagrant@ansible-server ~]$ #change hanlder option
+[vagrant@ansible-server ~]$
+[vagrant@ansible-server ~]$ vi force_handlers.yml
+[vagrant@ansible-server ~]$
+[vagrant@ansible-server ~]$
+[vagrant@ansible-server ~]$ anp force_handlers.yml
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [install tree] ************************************************************
+changed: [localhost]
+
+TASK [install unknown package] *************************************************
+fatal: [localhost]: FAILED! => {"changed": false, "msg": "No package matching 'treeppp' found available, installed or updated", "rc": 126, "results": ["No package matching 'treeppp' found available, installed or updated"]}
+
+RUNNING HANDLER [handler_status] ***********************************************
+ok: [localhost] => {
+    "msg": "handler on"
+}
+        to retry, use: --limit @/home/vagrant/force_handlers.retry
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=1
+
+[vagrant@ansible-server ~]$

@@ -1,0 +1,9 @@
+- name: for bond, bridge and vids
+  nclu:
+    commands:
+      - add bond bond0 bond slaves swp2,3
+      - add bridge
+      - add bridge bridge ports bond0
+      - add bridge bridge vids 10
+      - add bridge bridge pvid 1
+    atomic: true

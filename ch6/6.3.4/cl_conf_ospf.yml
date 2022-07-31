@@ -1,0 +1,60 @@
+- name: Config hostname and SVI for spineA
+  hosts: spine[0]
+  remote_user: cumulus
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add hostname ansible-spineA
+          - add vlan 10 ip address 10.0.10."{{ ansible_all_ipv4_addresses[0][-2:] }}"/24
+          - add interface swp4 ip address 10.0.101."{{ 
+                ansible_all_ipv4_addresses[0][-2:] }}"/24
+        atomic: true
+
+- name: Config hostname and SVI for spineB
+  hosts: spine[1]
+  remote_user: cumulus
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add hostname ansible-spineB
+          - add vlan 10 ip address 10.0.10."{{ ansible_all_ipv4_addresses[0][-2:] }}"/24
+          - add interface swp4 ip address 10.0.102."{{ 
+                ansible_all_ipv4_addresses[0][-2:] }}"/24
+        atomic: true
+
+- name: Config hostname and SVI leafA
+  hosts: leaf[0]
+  remote_user: cumulus
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add hostname ansible-leafA
+          - add interface swp4 ip address 10.0.101."{{ 
+                ansible_all_ipv4_addresses[0][-2:] }}"/24
+        atomic: true
+
+- name: Config hostname and SVI for leafB
+  hosts: leaf[1]
+  remote_user: cumulus
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add hostname ansible-leafB
+          - add interface swp4 ip address 10.0.102."{{ 
+                ansible_all_ipv4_addresses[0][-2:] }}"/24
+        atomic: true
+
+- name: Config OSPF for all
+  hosts: cl
+  remote_user: cumulus
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add ospf router-id 0.0.0."{{ ansible_all_ipv4_addresses[0][-2:] }}"
+          - add ospf network 10.0.0.0/16 area 0.0.0.0
+        atomic: true

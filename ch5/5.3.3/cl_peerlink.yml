@@ -1,0 +1,32 @@
+---
+- name: Config switch virtual interface(SVI) with bonding
+  hosts: spine
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: put in config
+      nclu:
+        commands:
+          - add bond bond0 bond slaves swp2,3
+          - add bridge
+          - add bridge bridge ports bond0
+          - add bridge bridge vids 10
+          - add bridge bridge pvid 1
+        atomic: true
+
+    - name: setup ip for spineA's SVI
+      delegate_to: 192.168.1.61
+      run_once: true
+      nclu:
+        commands:
+          - add vlan 10 ip address 10.0.10.61/24
+        atomic: true
+
+    - name: setup ip for spineB's SVI
+      delegate_to: 192.168.1.62
+      run_once: true
+      nclu:
+        commands:
+          - add vlan 10 ip address 10.0.10.62/24
+        atomic: true

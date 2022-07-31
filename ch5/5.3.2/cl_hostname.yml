@@ -1,0 +1,43 @@
+---
+- name: Change the hostname
+  hosts: cl
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: hostname for ansible-cl01
+      delegate_to: 192.168.1.61
+      run_once: true
+      nclu:
+        commands:
+          - add hostname ansible-spineA
+        atomic: true
+
+    - name: hostname for ansible-cl02
+      delegate_to: 192.168.1.62
+      run_once: true
+      nclu:
+        commands:
+          - add hostname ansible-spineB
+        atomic: true
+
+    - name: hostname for ansible-cl03
+      delegate_to: 192.168.1.63
+      run_once: true
+      nclu:
+        commands:
+          - add hostname ansible-leafA
+        atomic: true
+
+    - name: hostname for ansible-cl04
+      delegate_to: 192.168.1.64
+      run_once: true
+      nclu:
+        commands:
+          - add hostname ansible-leafB
+        atomic: true
+
+    - name: lldp service restart
+      service:
+        name: lldpd
+        state: restarted

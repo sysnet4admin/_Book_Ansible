@@ -1,0 +1,44 @@
+    ansible-vyos01: This is not an error message; everything may continue to work properly,
+    ansible-vyos01: in which case you may ignore this message.
+==> ansible-vyos01: Setting hostname...
+==> ansible-vyos01: Configuring and enabling network interfaces...
+The following SSH command responded with a non-zero exit status.
+Vagrant assumes that this means the command failed!
+
+/sbin/ifdown 'eth1' || true
+/sbin/ip addr flush dev 'eth1'
+/sbin/ifdown 'eth2' || true
+/sbin/ip addr flush dev 'eth2'
+/sbin/ifdown 'eth3' || true
+/sbin/ip addr flush dev 'eth3'
+# Remove any previous network modifications from the interfaces file
+sed -e '/^#VAGRANT-BEGIN/,$ d' /etc/network/interfaces > /tmp/vagrant-network-interfaces.pre
+sed -ne '/^#VAGRANT-END/,$ p' /etc/network/interfaces | tac | sed -e '/^#VAGRANT-END/,$ d' | tac > /tmp/vagrant-network-interfaces.post
+cat \
+  /tmp/vagrant-network-interfaces.pre \
+  /tmp/vagrant-network-entry \
+  /tmp/vagrant-network-interfaces.post \
+  > /etc/network/interfaces
+rm -f /tmp/vagrant-network-interfaces.pre
+rm -f /tmp/vagrant-network-entry
+rm -f /tmp/vagrant-network-interfaces.post
+
+/sbin/ifup 'eth1'
+/sbin/ifup 'eth2'
+/sbin/ifup 'eth3'
+
+Stdout from the command:
+
+
+
+Stderr from the command:
+
+/sbin/ifdown: interface eth1 not configured
+/sbin/ifdown: interface eth2 not configured
+/sbin/ifdown: interface eth3 not configured
+/etc/network/interfaces:20: option with empty value
+/sbin/ifup: couldn't read interfaces file "/etc/network/interfaces"
+/etc/network/interfaces:20: option with empty value
+/sbin/ifup: couldn't read interfaces file "/etc/network/interfaces"
+/etc/network/interfaces:20: option with empty value
+/sbin/ifup: couldn't read interfaces file "/etc/network/interfaces"

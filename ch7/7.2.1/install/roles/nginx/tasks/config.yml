@@ -1,0 +1,15 @@
+---
+- name: port from 80 to 8080
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    mode: 0644
+
+- name: create web page for each node
+  template:
+    src: index.j2
+    dest: /usr/share/nginx/html/index.html
+    mode: 0644
+    backup: yes
+  notify:
+    - restart nginx web server

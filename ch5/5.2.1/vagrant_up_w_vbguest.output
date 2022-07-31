@@ -1,0 +1,48 @@
+    ansible-vyos01: Inserting generated public key within guest...
+    ansible-vyos01: Removing insecure key from the guest if it's present...
+    ansible-vyos01: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> ansible-vyos01: Machine booted and ready!
+[ansible-vyos01] No installation found.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+E: Unable to locate package linux-headers-3.13.11-1-amd64-vyos
+E: Couldn't find any package by regex 'linux-headers-3.13.11-1-amd64-vyos'
+Ign http://packages.vyos.net helium Release.gpg
+Ign http://packages.vyos.net/vyos/ helium/main Translation-en
+Ign http://packages.vyos.net helium Release
+Err http://packages.vyos.net helium/main amd64 Packages
+  404  Not Found
+W: Failed to fetch http://packages.vyos.net/vyos/dists/helium/main/binary-amd64/Packages.gz  404  Not Found
+
+E: Some index files failed to download, they have been ignored, or old ones used instead.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+E: Unable to locate package linux-headers-3.13.11-1-amd64-vyos
+E: Couldn't find any package by regex 'linux-headers-3.13.11-1-amd64-vyos'
+/etc/bash.bash_logout: line 1: /vyatta-monitor-cleanup: No such file or directory
+==> ansible-vyos01: Checking for guest additions in VM...
+    ansible-vyos01: No guest additions were detected on the base box for this VM! Guest
+    ansible-vyos01: additions are required for forwarded ports, shared folders, host only
+    ansible-vyos01: networking, and more. If SSH fails on this machine, please install
+    ansible-vyos01: the guest additions and repackage the box to continue.
+    ansible-vyos01:
+    ansible-vyos01: This is not an error message; everything may continue to work properly,
+    ansible-vyos01: in which case you may ignore this message.
+The following SSH command responded with a non-zero exit status.
+Vagrant assumes that this means the command failed!
+
+apt-get install -y linux-headers-`uname -r`
+
+Stdout from the command:
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+
+
+Stderr from the command:
+
+E: Unable to locate package linux-headers-3.13.11-1-amd64-vyos
+E: Couldn't find any package by regex 'linux-headers-3.13.11-1-amd64-vyos'

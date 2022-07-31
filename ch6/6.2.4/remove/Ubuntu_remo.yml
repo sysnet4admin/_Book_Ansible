@@ -1,0 +1,2 @@
+- name: remove nginx web server
+  action: "{{ ansible_pkg_mgr }} name=nginx state=absent autoremove=yes"

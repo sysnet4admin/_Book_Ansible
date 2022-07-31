@@ -1,0 +1,53 @@
+c:\HashiCorp>vagrant provision
+==> ansible-server: Running provisioner: shell...
+    ansible-server: Running: inline script
+    ansible-server: Loaded plugins: fastestmirror
+    ansible-server: Loading mirror speeds from cached hostfile
+    ansible-server:  * base: mirror.navercorp.com
+    ansible-server:  * extras: mirror.navercorp.com
+    ansible-server:  * updates: mirror.navercorp.com
+    ansible-server: Package ansible-2.4.2.0-2.el7.noarch already installed and latest version
+    ansible-server: Nothing to do
+==> ansible-server: Running provisioner: file...
+==> ansible-server: Running provisioner: shell...
+    ansible-server: Running: inline script
+    ansible-server:  [WARNING]: Could not match supplied host pattern, ignoring: all
+    ansible-server:  [WARNING]: provided hosts list is empty, only localhost is available
+    ansible-server:
+    ansible-server: PLAY [Setup for the Ansible's Environment] **************************************
+    ansible-server:
+    ansible-server: TASK [Create vim env's directories & files] ************************************
+    ansible-server: changed: [localhost] => (item=mkdir -p /home/vagrant/.vim/autoload /home/vagrant/.vim/bundle)
+    ansible-server: changed: [localhost] => (item=touch /home/vagrant/.vimrc)
+    ansible-server: changed: [localhost] => (item=touch /home/vagrant/.bashrc)
+    ansible-server:
+    ansible-server: TASK [Install vim-enhanced] ****************************************************
+    ansible-server:  [WARNING]: Consider using file module with state=directory rather than running
+    ansible-server: mkdir
+    ansible-server:  [WARNING]: Consider using file module with state=touch rather than running
+    ansible-server: touch
+    ansible-server: changed: [localhost]
+    ansible-server:
+    ansible-server: TASK [Install git] *************************************************************
+    ansible-server: changed: [localhost]
+    ansible-server:
+    ansible-server: TASK [Download pathogen.vim] ***************************************************
+    ansible-server: changed: [localhost]
+    ansible-server:
+    ansible-server: TASK [Git clone vim-ansible-yaml] **********************************************
+    ansible-server:  [WARNING]: Consider using get_url or uri module rather than running curl
+    ansible-server: changed: [localhost]
+    ansible-server:
+    ansible-server: TASK [Configure vimrc] *********************************************************
+    ansible-server: changed: [localhost] => (item=set number)
+    ansible-server: changed: [localhost] => (item=execute pathogen#infect())
+    ansible-server: changed: [localhost] => (item=syntax on)
+    ansible-server:
+    ansible-server: TASK [Configure Bashrc] ********************************************************
+    ansible-server: changed: [localhost] => (item=alias ans='ansible')
+    ansible-server: changed: [localhost] => (item=alias anp='ansible-playbook')
+    ansible-server:
+    ansible-server: PLAY RECAP *********************************************************************
+    ansible-server: localhost                  : ok=7    changed=7    unreachable=0    failed=0
+
+c:\HashiCorp>

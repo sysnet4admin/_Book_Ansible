@@ -1,0 +1,36 @@
+---
+- name: Create authority between ansible-server and cumulus-nodes
+  hosts: cl
+  connection: local
+  vars:
+    ansible_password: vagrant
+    ansible_become_pass: CumulusLinux!
+
+  tasks:
+    - name: ssh-keyscan for known_hosts file
+      command: /usr/bin/ssh-keyscan -t ecdsa {{ ansible_host }}
+      register: keyscan
+    
+    - name: input key    
+      lineinfile:
+        path: ~/.ssh/known_hosts
+        line: "{{ item }}"
+        create: yes       
+      with_items:
+        - "{{ keyscan.stdout_lines }}"
+          
+    - name: ssh-keygen for authorized_keys file
+      command: |
+        ssh-keygen -C cumulus@{{ ansible_hostname }} \ 
+                   -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ''
+      ignore_errors: yes
+      run_once: true
+
+    - name: input key for each node
+      connection: ssh
+      become: yes
+      authorized_key:
+        user: cumulus
+        state: present
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"      
+      

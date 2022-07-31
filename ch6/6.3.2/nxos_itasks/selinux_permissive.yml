@@ -1,0 +1,2 @@
+- name: selinux change to permissive on ansible-server
+  selinux: policy=targeted state=permissive

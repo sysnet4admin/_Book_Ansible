@@ -1,0 +1,4 @@
+- name: for new hostname 
+  service:
+    name: lldpd
+    state: restarted

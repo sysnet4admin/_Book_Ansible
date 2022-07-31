@@ -1,0 +1,12 @@
+---
+- name: Install nginx on the nodes
+  hosts: nodes
+  become: yes
+  vars:
+    lnx_name: "{{ 'CentOS' if ansible_distribution == 'CentOS'
+                   else 'Ubuntu' if ansible_distribution == 'Ubuntu'
+                   else 'Just Linux' }}"
+
+  tasks:
+    - name: nginx for any linux
+      include_tasks: "{{ lnx_name }}.yml"
