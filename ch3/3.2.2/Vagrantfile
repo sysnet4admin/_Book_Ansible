@@ -8,6 +8,7 @@
 Vagrant.configure("2") do |config|
   config.vm.define "ansible-server" do |cfg|
     cfg.vm.box = "centos/7"
+    cfg.vm.box_url = "https://box.kuberneteslab.dev/centos/7"
 	cfg.vm.provider "virtualbox" do |vb|
 	  vb.name = "Ansible-Server(github_SysNet4Admin)"
 	end
@@ -15,6 +16,7 @@ Vagrant.configure("2") do |config|
 	cfg.vm.network "public_network", ip: "192.168.1.10"
 	cfg.vm.network "forwarded_port", guest: 22, host: 60010, auto_correct: true, id: "ssh"
 	cfg.vm.synced_folder "../data", "/vagrant", disabled: true
+	cfg.vm.provision "shell", path: "vault_repo_4_CentOS.sh"
 	cfg.vm.provision "shell", inline: "yum install epel-release -y"
 	cfg.vm.provision "shell", inline: "yum install ansible -y"
   end

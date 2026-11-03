@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
   #Ansible-Node101
   config.vm.define "ansible-node101" do |cfg|
      cfg.vm.box = "centos/7"
+     cfg.vm.box_url = "https://box.kuberneteslab.dev/centos/7"
 	 cfg.vm.provider "virtualbox" do |vb|
 	   vb.name = "Ansible-Node101(github_SysNet4Admin)"
 	 end
@@ -17,12 +18,14 @@ Vagrant.configure("2") do |config|
 	 cfg.vm.network "public_network", ip: "192.168.1.101"
 	 cfg.vm.network "forwarded_port", guest: 22, host: 60101, auto_correct: true, id: "ssh"
 	 cfg.vm.synced_folder "../data", "/vagrant", disabled: true 
+	 cfg.vm.provision "shell", path: "vault_repo_4_CentOS.sh"
 	 cfg.vm.provision "shell", path: "bash_ssh_conf_4_CentOS.sh"
   end
   
   #Ansible-Node102	 
   config.vm.define "ansible-node102" do |cfg|
      cfg.vm.box = "centos/7"
+     cfg.vm.box_url = "https://box.kuberneteslab.dev/centos/7"
 	 cfg.vm.provider "virtualbox" do |vb|
 	   vb.name = "Ansible-Node102(github_SysNet4Admin)"
 	 end
@@ -30,12 +33,14 @@ Vagrant.configure("2") do |config|
 	 cfg.vm.network "public_network", ip: "192.168.1.102"
 	 cfg.vm.network "forwarded_port", guest: 22, host: 60102, auto_correct: true, id: "ssh"
 	 cfg.vm.synced_folder "../data", "/vagrant", disabled: true
+	 cfg.vm.provision "shell", path: "vault_repo_4_CentOS.sh"
 	 cfg.vm.provision "shell", path: "bash_ssh_conf_4_CentOS.sh"
   end
 
   #Ansible-Node103	 
   config.vm.define "ansible-node103" do |cfg|
      cfg.vm.box = "centos/7"
+     cfg.vm.box_url = "https://box.kuberneteslab.dev/centos/7"
 	 cfg.vm.provider "virtualbox" do |vb|
 	   vb.name = "Ansible-Node103(github_SysNet4Admin)"
 	 end
@@ -43,12 +48,14 @@ Vagrant.configure("2") do |config|
 	 cfg.vm.network "public_network", ip: "192.168.1.103"
 	 cfg.vm.network "forwarded_port", guest: 22, host: 60103, auto_correct: true, id: "ssh"
 	 cfg.vm.synced_folder "../data", "/vagrant", disabled: true 
+	 cfg.vm.provision "shell", path: "vault_repo_4_CentOS.sh"
 	 cfg.vm.provision "shell", path: "bash_ssh_conf_4_CentOS.sh"
   end
 
   #Ansible-Node104	 
   config.vm.define "ansible-node104" do |cfg|
      cfg.vm.box = "centos/7"
+     cfg.vm.box_url = "https://box.kuberneteslab.dev/centos/7"
 	 cfg.vm.provider "virtualbox" do |vb|
 	   vb.name = "Ansible-Node104(github_SysNet4Admin)"
 	 end
@@ -56,12 +63,14 @@ Vagrant.configure("2") do |config|
 	 cfg.vm.network "public_network", ip: "192.168.1.104"
 	 cfg.vm.network "forwarded_port", guest: 22, host: 60104, auto_correct: true, id: "ssh"
 	 cfg.vm.synced_folder "../data", "/vagrant", disabled: true 
+	 cfg.vm.provision "shell", path: "vault_repo_4_CentOS.sh"
 	 cfg.vm.provision "shell", path: "bash_ssh_conf_4_CentOS.sh"
   end
 
   #Ansible-Node105	 
   config.vm.define "ansible-node105" do |cfg|
      cfg.vm.box = "centos/7"
+     cfg.vm.box_url = "https://box.kuberneteslab.dev/centos/7"
 	 cfg.vm.provider "virtualbox" do |vb|
 	   vb.name = "Ansible-Node105(github_SysNet4Admin)"
 	 end
@@ -69,6 +78,7 @@ Vagrant.configure("2") do |config|
 	 cfg.vm.network "public_network", ip: "192.168.1.105"
 	 cfg.vm.network "forwarded_port", guest: 22, host: 60105, auto_correct: true, id: "ssh"
 	 cfg.vm.synced_folder "../data", "/vagrant", disabled: true 
+	 cfg.vm.provision "shell", path: "vault_repo_4_CentOS.sh"
 	 cfg.vm.provision "shell", path: "bash_ssh_conf_4_CentOS.sh"
   end
 
@@ -80,6 +90,7 @@ Vagrant.configure("2") do |config|
   #Ansible-Node201
   config.vm.define "ansible-node201" do |cfg|
      cfg.vm.box = "ubuntu/trusty64"
+     cfg.vm.box_url = "https://box.kuberneteslab.dev/ubuntu/trusty64"
 	 cfg.vm.provider "virtualbox" do |vb|
 	   vb.name = "Ansible-Node201(github_SysNet4Admin)"
 	 end
@@ -92,6 +103,7 @@ Vagrant.configure("2") do |config|
   #Ansible-Node202	 
   config.vm.define "ansible-node202" do |cfg|
      cfg.vm.box = "ubuntu/trusty64"
+     cfg.vm.box_url = "https://box.kuberneteslab.dev/ubuntu/trusty64"
 	 cfg.vm.provider "virtualbox" do |vb|
 	   vb.name = "Ansible-Node202(github_SysNet4Admin)"
 	 end
@@ -104,6 +116,7 @@ Vagrant.configure("2") do |config|
   #Ansible-Node203	 
   config.vm.define "ansible-node203" do |cfg|
      cfg.vm.box = "ubuntu/trusty64"
+     cfg.vm.box_url = "https://box.kuberneteslab.dev/ubuntu/trusty64"
 	 cfg.vm.provider "virtualbox" do |vb|
 	   vb.name = "Ansible-Node203(github_SysNet4Admin)"
 	 end
@@ -116,6 +129,7 @@ Vagrant.configure("2") do |config|
   #Ansible-Node204	 
   config.vm.define "ansible-node204" do |cfg|
      cfg.vm.box = "ubuntu/trusty64"
+     cfg.vm.box_url = "https://box.kuberneteslab.dev/ubuntu/trusty64"
 	 cfg.vm.provider "virtualbox" do |vb|
 	   vb.name = "Ansible-Node204(github_SysNet4Admin)"
 	 end
@@ -128,6 +142,7 @@ Vagrant.configure("2") do |config|
   #Ansible-Node205	 
   config.vm.define "ansible-node205" do |cfg|
      cfg.vm.box = "ubuntu/trusty64"
+     cfg.vm.box_url = "https://box.kuberneteslab.dev/ubuntu/trusty64"
 	 cfg.vm.provider "virtualbox" do |vb|
 	   vb.name = "Ansible-Node205(github_SysNet4Admin)"
 	 end
@@ -144,6 +159,7 @@ Vagrant.configure("2") do |config|
   
   config.vm.define "ansible-server" do |cfg|
     cfg.vm.box = "centos/7"
+    cfg.vm.box_url = "https://box.kuberneteslab.dev/centos/7"
  	cfg.vm.provider "virtualbox" do |vb|
 	  vb.name = "Ansible-Server(github_SysNet4Admin)"
 	end
@@ -151,6 +167,7 @@ Vagrant.configure("2") do |config|
 	cfg.vm.network "public_network", ip: "192.168.1.10"
 	cfg.vm.network "forwarded_port", guest: 22, host: 60010, auto_correct: true, id: "ssh"
 	cfg.vm.synced_folder "../data", "/vagrant", disabled: true
+	cfg.vm.provision "shell", path: "vault_repo_4_CentOS.sh"
 	cfg.vm.provision "shell", inline: "yum install epel-release -y"
 	cfg.vm.provision "shell", inline: "yum install ansible -y"
 	cfg.vm.provision "file", source: "ansible_env_ready.yml", 

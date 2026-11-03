@@ -31,8 +31,8 @@
         state: present
 
     - name: Install pywinrm
-      pip:
-        name: pywinrm
+      yum:
+        name: python2-winrm
         state: present
 ###################################
 
