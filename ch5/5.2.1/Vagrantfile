@@ -20,7 +20,6 @@ Vagrant.configure("2") do |config|
 	 vy.vm.network "private_network", virtualbox__intnet: "eth2", auto_config: false
 	 vy.vm.network "private_network", virtualbox__intnet: "eth3", auto_config: false
      vy.vm.synced_folder "../data", "/vagrant", disabled: true 
-	 vy.vbguest.auto_update = false
   end
 
   #Ansible-VyOS02
@@ -36,7 +35,6 @@ Vagrant.configure("2") do |config|
 	 vy.vm.network "private_network", virtualbox__intnet: "eth2", auto_config: false
 	 vy.vm.network "private_network", virtualbox__intnet: "eth3", auto_config: false
      vy.vm.synced_folder "../data", "/vagrant", disabled: true 
-	 vy.vbguest.auto_update = false
   end
   
   #================#
