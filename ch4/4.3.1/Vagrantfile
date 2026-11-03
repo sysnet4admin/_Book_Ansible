@@ -101,7 +101,8 @@ Vagrant.configure("2") do |config|
   
   #Ansible-Node07
   config.vm.define "ansible-node07" do |cfg|
-     cfg.vm.box = "sysnet4admin/Windows2016"
+     cfg.vm.box = "sysnet4admin/Windows2019"
+     cfg.vm.box_url = "https://box.kuberneteslab.dev/sysnet4admin/Windows2019"
 	 cfg.vm.provider "virtualbox" do |vb|
 	   vb.name = "Ansible-Node07(github_SysNet4Admin)"
 	   vb.customize ['modifyvm', :id, '--clipboard', 'bidirectional']
