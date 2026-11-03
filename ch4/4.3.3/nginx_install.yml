@@ -10,7 +10,7 @@
     - name: install nginx web server
       yum: name=nginx state=present
     - name: upload default index.html for web server
-      get_url: url=https://www.nginx.com dest=/usr/share/nginx/html/ mode=0644
+      get_url: url=http://nginx.org dest=/usr/share/nginx/html/ mode=0644
     - name: start nginx web server
       service: name=nginx state=started
 
@@ -23,7 +23,7 @@
     - name: install nginx web server
       apt: pkg=nginx state=present update_cache=yes
     - name: upload default index.html for web server
-      get_url: url=https://www.nginx.com dest=/usr/share/nginx/html/ 
+      get_url: url=http://nginx.org dest=/usr/share/nginx/html/ 
                mode=0644 validate_certs=no
 
 - name: Install nginx on Windows
@@ -49,7 +49,7 @@
         name: nssm
     - name: download new index.html
       win_get_url:
-        url: https://www.nginx.com
+        url: http://nginx.org
         dest: C:\nginx\nginx-1.14.0\html\index.html
     - name: nginx service on by NSSM
       win_nssm:
